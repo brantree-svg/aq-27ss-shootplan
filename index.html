@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>AQ 27SS SHOOT PLAN</title>
+<style>
+@font-face { font-family: 'Pretendard'; src: url('pretendard-subset.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #F2F0E9; -webkit-text-size-adjust: 100%; }
+#stage { font-family: 'Pretendard', Arial, sans-serif; color: #111111; }
+#stage section { padding: 0; background: #F2F0E9; }
+#stage h1, #stage h2, #stage p { margin: 0; }
+.t1 { font-size: 55px; line-height: 60px; font-weight: 300; letter-spacing: 0; color: #111111; white-space: nowrap; }
+.t2 { font-size: 21px; line-height: 28px; font-weight: 500; letter-spacing: 0; color: #111111; white-space: nowrap; }
+.t3 { font-size: 13px; line-height: 20px; font-weight: 500; letter-spacing: 0; color: #7D7B74; white-space: nowrap; }
+.t1.on-image { color: #F2F0E9; }
+.t3.on-image { color: #F2F0E9; }
+.right { text-align: right; }
+.photo { object-fit: cover; }
+.rule { background: #CBC7BB; }
+.b { font-weight: 700; }
+.shade { background: linear-gradient(180deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0) 24%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.62) 100%); }
+
+#view { position: fixed; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; touch-action: pan-y; }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; margin: -540px 0 0 -960px; transform-origin: 50% 50%; }
+#stage section { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; visibility: hidden; transition: opacity .28s ease, visibility 0s linear .28s; }
+#stage section.on { opacity: 1; visibility: visible; transition: opacity .28s ease; }
+#stage.boot section { transition: none; }
+#stage img[data-zoom] { cursor: zoom-in; }
+.ui { font-family: 'Pretendard', Arial, sans-serif; font-size: 13px; line-height: 20px; font-weight: 500; color: #111111; }
+.nav { position: fixed; top: 50%; width: 44px; height: 72px; margin-top: -36px; border: 0; padding: 0; background: rgba(17,17,17,.0); color: #7D7B74; font-size: 30px; line-height: 72px; cursor: pointer; z-index: 5; opacity: .55; }
+.nav:hover { opacity: 1; background: rgba(17,17,17,.06); }
+#prev { left: 0; } #next { right: 0; }
+#bar { position: fixed; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(17,17,17,.08); z-index: 5; }
+#bar i { display: block; height: 2px; width: 0; background: #111111; transition: width .28s ease; }
+#hud { position: fixed; right: 12px; bottom: 10px; z-index: 6; display: flex; gap: 10px; align-items: center; }
+#hud button, #intro button, #lb button { font: inherit; color: inherit; background: rgba(242,240,233,.92); border: 1px solid #CBC7BB; padding: 5px 12px; cursor: pointer; border-radius: 0; }
+#hud button:hover, #intro button:hover { background: #111111; color: #F2F0E9; border-color: #111111; }
+#hud, .nav { transition: opacity .3s ease; }
+body.idle #hud, body.idle .nav { opacity: 0; pointer-events: none; }
+#intro { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 20; background: rgba(242,240,233,.96); display: flex; align-items: center; justify-content: center; }
+#intro.off, #lb.off, #rot.off { display: none; }
+#intro div.box { width: min(420px, 84vw); }
+#intro h2 { font-size: 21px; line-height: 28px; font-weight: 500; margin: 0 0 14px; }
+#intro p { margin: 0 0 6px; color: #7D7B74; }
+#intro .row { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+#intro .row button.main { background: #111111; color: #F2F0E9; border-color: #111111; }
+#rot { position: fixed; left: 0; right: 0; top: 0; z-index: 15; text-align: center; padding: 10px 12px; background: #111111; color: #F2F0E9; }
+#lb { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 30; background: rgba(17,17,17,.94); color: #F2F0E9; }
+#lb img { position: absolute; left: 50%; top: 50%; max-width: 92vw; max-height: 84vh; transform: translate(-50%, -52%); cursor: zoom-out; }
+#lb .cap { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; color: #F2F0E9; }
+#lb .cap span { display: block; }
+#lbc { color: #CBC7BB; }
+#lbd { font-size: 15px; line-height: 24px; }
+#lb img { max-height: 82vh; }
+#lb button { position: absolute; background: transparent; border: 0; color: #F2F0E9; font-size: 30px; line-height: 44px; width: 52px; height: 72px; padding: 0; }
+#lbp { left: 4px; top: 50%; margin-top: -36px; } #lbn { right: 4px; top: 50%; margin-top: -36px; }
+#lbx { right: 6px; top: 6px; font-size: 26px !important; height: 44px !important; }
+</style>
+</head>
+<body>
+<div id="view"><div id="stage" class="boot">
+<section id="s1" data-id="cover">
+<img data-src="logo_aq.png" alt="Aquascutum London" style="position:absolute;left:60px;top:84px;width:300px;height:154px;object-fit:contain">
+<h1 class="t1" style="position:absolute;left:60px;top:900px;width:1200px">27SS SHOOT PLAN</h1>
+<p class="t3" style="position:absolute;left:60px;top:972px;width:1200px">A TAILORED HOLIDAY · EASY FORMALITY · SUMMER IN RESIDENCE</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">2026.11.17 · VER.05</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">01 / 18</p>
+</section>
+<section id="s2" data-id="compare">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Three Concepts</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">AQUASCUTUM 27SS SHOOT PLAN</p>
+<img class="photo" data-src="cp6_a.jpg" alt="Concept A reference look" style="position:absolute;left:60px;top:84px;width:589px;height:820px" data-zoom="1" data-cap="A Tailored Holiday" data-desc="석조 계단 · 골든아워 · 정자세">
+<h2 class="t2" style="position:absolute;left:60px;top:920px;width:589px">A Tailored Holiday</h2>
+<p class="t3" style="position:absolute;left:60px;top:952px;width:589px">A · 직사광 · 정자세 · 건축 배경</p>
+<img class="photo" data-src="cp6_b.jpg" alt="Concept B reference look" style="position:absolute;left:665px;top:84px;width:589px;height:820px" data-zoom="1" data-cap="Easy Formality" data-desc="파도 · 역광 · 워킹">
+<h2 class="t2" style="position:absolute;left:665px;top:920px;width:589px">Easy Formality</h2>
+<p class="t3" style="position:absolute;left:665px;top:952px;width:589px">B · 확산광 · 워킹 · 해변과 산책로</p>
+<img class="photo" data-src="cp6_c.jpg" alt="Concept C reference look" style="position:absolute;left:1270px;top:84px;width:589px;height:820px" data-zoom="1" data-cap="Summer in Residence" data-desc="해안 정원 · 오후 자연광 · 기댄 포즈">
+<h2 class="t2" style="position:absolute;left:1270px;top:920px;width:589px">Summer in Residence</h2>
+<p class="t3" style="position:absolute;left:1270px;top:952px;width:589px">C · 창가 자연광 · 기댄 포즈 · 빌라와 정원</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">OVERVIEW</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">02 / 18</p>
+</section>
+<section id="s3" data-id="matrix">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Concept Matrix</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">AQUASCUTUM 27SS SHOOT PLAN</p>
+<h2 class="t2 b" style="position:absolute;left:480px;top:252px;width:440px">A · A Tailored Holiday</h2>
+<h2 class="t2 b" style="position:absolute;left:940px;top:252px;width:440px">B · Easy Formality</h2>
+<h2 class="t2 b" style="position:absolute;left:1400px;top:252px;width:440px">C · Summer in Residence</h2>
+<div style="position:absolute;left:60px;top:300px;width:1800px;height:521px"><div class="rule" style="height:1px;margin-bottom:129px"></div><div class="rule" style="height:1px;margin-bottom:129px"></div><div class="rule" style="height:1px;margin-bottom:129px"></div><div class="rule" style="height:1px;margin-bottom:129px"></div><div class="rule" style="height:1px;margin-bottom:0px"></div></div>
+<p class="t2 b" style="position:absolute;left:60px;top:351px;width:400px">LOCATION</p>
+<p class="t2" style="position:absolute;left:480px;top:351px;width:440px">석조 건축 · 광장 · 계단</p>
+<p class="t2" style="position:absolute;left:940px;top:351px;width:440px">해변 · 해안 산책로 · 항구</p>
+<p class="t2" style="position:absolute;left:1400px;top:351px;width:440px">빌라 테라스 · 정원</p>
+<p class="t2 b" style="position:absolute;left:60px;top:481px;width:400px">LIGHTING</p>
+<p class="t2" style="position:absolute;left:480px;top:481px;width:440px">직사광 · 석양</p>
+<p class="t2" style="position:absolute;left:940px;top:481px;width:440px">한낮 확산광</p>
+<p class="t2" style="position:absolute;left:1400px;top:481px;width:440px">실내외 경계의 빛</p>
+<p class="t2 b" style="position:absolute;left:60px;top:611px;width:400px">POSE</p>
+<p class="t2" style="position:absolute;left:480px;top:611px;width:440px">정자세</p>
+<p class="t2" style="position:absolute;left:940px;top:611px;width:440px">걷는 컷</p>
+<p class="t2" style="position:absolute;left:1400px;top:611px;width:440px">앉거나 기댄 컷</p>
+<p class="t2 b" style="position:absolute;left:60px;top:741px;width:400px">MOOD</p>
+<p class="t2" style="position:absolute;left:480px;top:741px;width:440px">단정 · 격식</p>
+<p class="t2" style="position:absolute;left:940px;top:741px;width:440px">경쾌 · 가벼움</p>
+<p class="t2" style="position:absolute;left:1400px;top:741px;width:440px">느긋 · 고요</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">OVERVIEW</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">03 / 18</p>
+</section>
+<section id="s4" data-id="a-concept">
+<img class="photo" data-src="hero_cefalu.jpg" alt="Location" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px">
+<div class="shade" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px"></div>
+<p class="t3 on-image" style="position:absolute;left:60px;top:40px;width:600px">A · CONCEPT</p>
+<p class="t3 on-image right" style="position:absolute;left:1060px;top:40px;width:800px">AQUASCUTUM 27SS SHOOT PLAN</p>
+<p class="t3 on-image" style="position:absolute;left:60px;top:912px;width:600px">CONCEPT A</p>
+<h1 class="t1 on-image" style="position:absolute;left:60px;top:940px;width:1400px">A Tailored Holiday</h1>
+<p class="t3 on-image" style="position:absolute;left:60px;top:1018px;width:800px">CEFALÙ</p>
+<p class="t3 on-image right" style="position:absolute;left:1660px;top:1018px;width:200px">04 / 18</p>
+</section>
+<section id="s5" data-id="a-studio">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Studio Lookbook</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">직사광 · 정자세 · 화이트 호리존</p>
+<img class="photo" data-src="st6_lp00.jpg" alt="Loro Piana · 27Ss" style="position:absolute;left:60px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="LORO PIANA · 27SS" data-desc="직사광 · 정자세 · 원단 결">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:438px">LORO PIANA · 27SS</p>
+<img class="photo" data-src="st6_lp29.jpg" alt="Loro Piana · 27Ss" style="position:absolute;left:514px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="LORO PIANA · 27SS" data-desc="직사광 · 측면 정자세 · 질감 대비">
+<p class="t3" style="position:absolute;left:514px;top:964px;width:438px">LORO PIANA · 27SS</p>
+<img class="photo" data-src="st6_lp48.jpg" alt="Loro Piana · 27Ss" style="position:absolute;left:968px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="LORO PIANA · 27SS" data-desc="직사광 · 정자세 · 실루엣 윤곽">
+<p class="t3" style="position:absolute;left:968px;top:964px;width:438px">LORO PIANA · 27SS</p>
+<img class="photo" data-src="st6_el00.jpg" alt="Eleventy · 27Ss" style="position:absolute;left:1422px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="ELEVENTY · 27SS" data-desc="확산광 · 정자세 · 화이트 계조">
+<p class="t3" style="position:absolute;left:1422px;top:964px;width:438px">ELEVENTY · 27SS</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">A · A TAILORED HOLIDAY</p>
+<p class="t3" style="position:absolute;left:968px;top:1018px;width:438px">SOURCE · FASHIONSNAP</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">05 / 18</p>
+</section>
+<section id="s6" data-id="a-resort">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Location AI Lookbook</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">골든아워 · 정자세 · 석조 건축 배경</p>
+<img class="photo" data-src="rs6_m40.jpg" alt="Brunello Cucinelli · 26Ss" style="position:absolute;left:60px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="BRUNELLO CUCINELLI · 26SS" data-desc="석조 계단 · 골든아워 · 리넨 질감">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:589px">BRUNELLO CUCINELLI · 26SS</p>
+<img class="photo" data-src="rs6_m38.jpg" alt="Brunello Cucinelli · 26Ss" style="position:absolute;left:665px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="BRUNELLO CUCINELLI · 26SS" data-desc="바로크 계단 · 골든아워 · 원경 2인">
+<p class="t3" style="position:absolute;left:665px;top:964px;width:589px">BRUNELLO CUCINELLI · 26SS</p>
+<img class="photo" data-src="rs6_m56.jpg" alt="Brunello Cucinelli · 26Ss" style="position:absolute;left:1270px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="BRUNELLO CUCINELLI · 26SS" data-desc="석조 벽 · 측광 · 니트 입체감">
+<p class="t3" style="position:absolute;left:1270px;top:964px;width:589px">BRUNELLO CUCINELLI · 26SS</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">A · A TAILORED HOLIDAY</p>
+<p class="t3" style="position:absolute;left:665px;top:1018px;width:589px">SOURCE · INSTAGRAM</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">06 / 18</p>
+</section>
+<section id="s7" data-id="a-resort2">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Location AI Lookbook</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">자연광 · 정면 정자세 · 석조 벽 배경</p>
+<img class="photo" data-src="rs6_og07.jpg" alt="Officine Générale · 25Ss" style="position:absolute;left:60px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="OFFICINE GÉNÉRALE · 25SS" data-desc="석조 벽 · 자연광 · 정자세">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:589px">OFFICINE GÉNÉRALE · 25SS</p>
+<img class="photo" data-src="rs6_og18.jpg" alt="Officine Générale · 25Ss" style="position:absolute;left:665px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="OFFICINE GÉNÉRALE · 25SS" data-desc="조각 중정 · 자연광 · 화이트 음영">
+<p class="t3" style="position:absolute;left:665px;top:964px;width:589px">OFFICINE GÉNÉRALE · 25SS</p>
+<img class="photo" data-src="rs6_og05.jpg" alt="Officine Générale · 25Ss" style="position:absolute;left:1270px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="OFFICINE GÉNÉRALE · 25SS" data-desc="조각 중정 · 자연광 · 정자세">
+<p class="t3" style="position:absolute;left:1270px;top:964px;width:589px">OFFICINE GÉNÉRALE · 25SS</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">A · A TAILORED HOLIDAY</p>
+<p class="t3" style="position:absolute;left:665px;top:1018px;width:589px">SOURCE · FASHIONSNAP</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">07 / 18</p>
+</section>
+<section id="s8" data-id="a-location">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Location</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">광장 · 계단 · 석조 골목</p>
+<img class="photo" data-src="lb_us24.jpg" alt="Location" style="position:absolute;left:60px;top:84px;width:1187px;height:866px" data-zoom="1" data-cap="PALERMO" data-desc="분수 광장 · 대칭 계단 · 석조 파사드">
+<img class="photo" data-src="ls_us16.jpg" alt="Location" style="position:absolute;left:1263px;top:84px;width:597px;height:425px" data-zoom="1" data-cap="MATERA" data-desc="석조 계단 · 덩굴">
+<img class="photo" data-src="ls_us14.jpg" alt="Location" style="position:absolute;left:1263px;top:525px;width:597px;height:425px" data-zoom="1" data-cap="STARI GRAD" data-desc="석조 골목 · 계단">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:1187px">PALERMO</p>
+<p class="t3" style="position:absolute;left:1263px;top:964px;width:597px">MATERA / STARI GRAD</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">A · A TAILORED HOLIDAY</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">08 / 18</p>
+</section>
+<section id="s9" data-id="b-concept">
+<img class="photo" data-src="hero_us45.jpg" alt="Location" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px">
+<div class="shade" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px"></div>
+<p class="t3 on-image" style="position:absolute;left:60px;top:40px;width:600px">B · CONCEPT</p>
+<p class="t3 on-image right" style="position:absolute;left:1060px;top:40px;width:800px">AQUASCUTUM 27SS SHOOT PLAN</p>
+<p class="t3 on-image" style="position:absolute;left:60px;top:912px;width:600px">CONCEPT B</p>
+<h1 class="t1 on-image" style="position:absolute;left:60px;top:940px;width:1400px">Easy Formality</h1>
+<p class="t3 on-image" style="position:absolute;left:60px;top:1018px;width:800px">ATRANI</p>
+<p class="t3 on-image right" style="position:absolute;left:1660px;top:1018px;width:200px">09 / 18</p>
+</section>
+<section id="s10" data-id="b-studio">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Studio Lookbook</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">확산광 · 워킹 · 전신 풀샷</p>
+<img class="photo" data-src="st6_gp16.jpg" alt="Graphpaper · 26Ss" style="position:absolute;left:60px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="GRAPHPAPER · 26SS" data-desc="확산광 · 정면 워킹 · 드레이프">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:438px">GRAPHPAPER · 26SS</p>
+<img class="photo" data-src="st6_hy13.jpg" alt="Hyke · 27Ss" style="position:absolute;left:514px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="HYKE · 27SS" data-desc="확산광 · 워킹 · 원단 흔들림">
+<p class="t3" style="position:absolute;left:514px;top:964px;width:438px">HYKE · 27SS</p>
+<img class="photo" data-src="st6_sc18.jpg" alt="Scye · 26Ss" style="position:absolute;left:968px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="SCYE · 26SS" data-desc="창가 자연광 · 측면 워킹 · 자연 주름">
+<p class="t3" style="position:absolute;left:968px;top:964px;width:438px">SCYE · 26SS</p>
+<img class="photo" data-src="st6_gp27.jpg" alt="Graphpaper · 26Ss" style="position:absolute;left:1422px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="GRAPHPAPER · 26SS" data-desc="확산광 · 정면 워킹 · 은은한 광택">
+<p class="t3" style="position:absolute;left:1422px;top:964px;width:438px">GRAPHPAPER · 26SS</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">B · EASY FORMALITY</p>
+<p class="t3" style="position:absolute;left:968px;top:1018px;width:438px">SOURCE · FASHIONSNAP</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">10 / 18</p>
+</section>
+<section id="s11" data-id="b-resort">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Location AI Lookbook</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">한낮 자연광 · 워킹 · 해변 배경</p>
+<img class="photo" data-src="rs6_bo08.jpg" alt="Boglioli · 23Ss" style="position:absolute;left:60px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="BOGLIOLI · 23SS" data-desc="해변 데크 · 자연광 · 바람 워킹">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:589px">BOGLIOLI · 23SS</p>
+<img class="photo" data-src="rs6_bo13.jpg" alt="Boglioli · 23Ss" style="position:absolute;left:665px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="BOGLIOLI · 23SS" data-desc="파도 · 역광 · 윤곽선">
+<p class="t3" style="position:absolute;left:665px;top:964px;width:589px">BOGLIOLI · 23SS</p>
+<img class="photo" data-src="rs6_bo21.jpg" alt="Boglioli · 23Ss" style="position:absolute;left:1270px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="BOGLIOLI · 23SS" data-desc="모래사장 · 자연광 · 원단 움직임">
+<p class="t3" style="position:absolute;left:1270px;top:964px;width:589px">BOGLIOLI · 23SS</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">B · EASY FORMALITY</p>
+<p class="t3" style="position:absolute;left:665px;top:1018px;width:589px">SOURCE · FASHIONSNAP</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">11 / 18</p>
+</section>
+<section id="s12" data-id="b-resort2">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Location AI Lookbook</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">한낮 자연광 · 워킹 · 해안선 배경</p>
+<img class="photo" data-src="rs6_md04.jpg" alt="Massimo Dutti · 26Ss" style="position:absolute;left:60px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="MASSIMO DUTTI · 26SS" data-desc="해안 · 사광 · 정면 워킹">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:589px">MASSIMO DUTTI · 26SS</p>
+<img class="photo" data-src="rs6_md07.jpg" alt="Massimo Dutti · 26Ss" style="position:absolute;left:665px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="MASSIMO DUTTI · 26SS" data-desc="해변 · 자연광 · 시스루 레이어">
+<p class="t3" style="position:absolute;left:665px;top:964px;width:589px">MASSIMO DUTTI · 26SS</p>
+<img class="photo" data-src="rs6_pe49.jpg" alt="Postelegant · 24Ss" style="position:absolute;left:1270px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="POSTELEGANT · 24SS" data-desc="해안선 · 확산광 · 원단 볼륨">
+<p class="t3" style="position:absolute;left:1270px;top:964px;width:589px">POSTELEGANT · 24SS</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">B · EASY FORMALITY</p>
+<p class="t3" style="position:absolute;left:665px;top:1018px;width:589px">SOURCE · INSTAGRAM · FASHIONSNAP</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">12 / 18</p>
+</section>
+<section id="s13" data-id="b-location">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Location</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">해변 · 해안 산책로 · 항구</p>
+<img class="photo" data-src="lb_us17.jpg" alt="Location" style="position:absolute;left:60px;top:84px;width:1187px;height:866px" data-zoom="1" data-cap="POSITANO" data-desc="해변 전경 · 파라솔 · 절벽 마을">
+<img class="photo" data-src="ls_us47.jpg" alt="Location" style="position:absolute;left:1263px;top:84px;width:597px;height:425px" data-zoom="1" data-cap="ATRANI" data-desc="아치 다리 · 해안 마을">
+<img class="photo" data-src="ls_us05.jpg" alt="Location" style="position:absolute;left:1263px;top:525px;width:597px;height:425px" data-zoom="1" data-cap="SORRENTO" data-desc="항구 · 수평선">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:1187px">POSITANO</p>
+<p class="t3" style="position:absolute;left:1263px;top:964px;width:597px">ATRANI / SORRENTO</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">B · EASY FORMALITY</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">13 / 18</p>
+</section>
+<section id="s14" data-id="c-concept">
+<img class="photo" data-src="hero_us04.jpg" alt="Location" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px">
+<div class="shade" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px"></div>
+<p class="t3 on-image" style="position:absolute;left:60px;top:40px;width:600px">C · CONCEPT</p>
+<p class="t3 on-image right" style="position:absolute;left:1060px;top:40px;width:800px">AQUASCUTUM 27SS SHOOT PLAN</p>
+<p class="t3 on-image" style="position:absolute;left:60px;top:912px;width:600px">CONCEPT C</p>
+<h1 class="t1 on-image" style="position:absolute;left:60px;top:940px;width:1400px">Summer in Residence</h1>
+<p class="t3 on-image" style="position:absolute;left:60px;top:1018px;width:800px">RAVELLO</p>
+<p class="t3 on-image right" style="position:absolute;left:1660px;top:1018px;width:200px">14 / 18</p>
+</section>
+<section id="s15" data-id="c-studio">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Studio Lookbook</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">창가 자연광 · 기댄 포즈 · 창가 세트</p>
+<img class="photo" data-src="st6_sc24.jpg" alt="Scye · 26Ss" style="position:absolute;left:60px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="SCYE · 26SS" data-desc="자연광 · 측면 스탠딩 · 주름 음영">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:438px">SCYE · 26SS</p>
+<img class="photo" data-src="st6_ag38.jpg" alt="Agnona · 27Ss" style="position:absolute;left:514px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="AGNONA · 27SS" data-desc="창가 자연광 · 착석 · 타공 질감">
+<p class="t3" style="position:absolute;left:514px;top:964px;width:438px">AGNONA · 27SS</p>
+<img class="photo" data-src="st6_ag49.jpg" alt="Agnona · 27Ss" style="position:absolute;left:968px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="AGNONA · 27SS" data-desc="창가 자연광 · 정면 스탠딩 · 밝은 톤 계조">
+<p class="t3" style="position:absolute;left:968px;top:964px;width:438px">AGNONA · 27SS</p>
+<img class="photo" data-src="st6_ag59.jpg" alt="Agnona · 27Ss" style="position:absolute;left:1422px;top:84px;width:438px;height:866px" data-zoom="1" data-cap="AGNONA · 27SS" data-desc="창가 자연광 · 정면 스탠딩 · 창 그림자">
+<p class="t3" style="position:absolute;left:1422px;top:964px;width:438px">AGNONA · 27SS</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">C · SUMMER IN RESIDENCE</p>
+<p class="t3" style="position:absolute;left:968px;top:1018px;width:438px">SOURCE · FASHIONSNAP</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">15 / 18</p>
+</section>
+<section id="s16" data-id="c-resort">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Location AI Lookbook</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">오후 자연광 · 앉은 포즈 · 테라스와 정원</p>
+<img class="photo" data-src="rs6_m49.jpg" alt="Brunello Cucinelli · 26Ss" style="position:absolute;left:60px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="BRUNELLO CUCINELLI · 26SS" data-desc="테라스 · 오후 자연광 · 착석 2인">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:589px">BRUNELLO CUCINELLI · 26SS</p>
+<img class="photo" data-src="rs6_m413.jpg" alt="Ralph Lauren · Spring 26" style="position:absolute;left:665px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="RALPH LAUREN · SPRING 26" data-desc="해안 정원 · 오후 자연광 · 등나무 의자">
+<p class="t3" style="position:absolute;left:665px;top:964px;width:589px">RALPH LAUREN · SPRING 26</p>
+<img class="photo" data-src="rs6_m171.jpg" alt="Loro Piana · Resort 26" style="position:absolute;left:1270px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="LORO PIANA · RESORT 26" data-desc="테라스 · 사광 · 누운 포즈">
+<p class="t3" style="position:absolute;left:1270px;top:964px;width:589px">LORO PIANA · RESORT 26</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">C · SUMMER IN RESIDENCE</p>
+<p class="t3" style="position:absolute;left:665px;top:1018px;width:589px">SOURCE · INSTAGRAM</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">16 / 18</p>
+</section>
+<section id="s17" data-id="c-resort2">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Location AI Lookbook</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">오후 자연광 · 앉은 포즈 · 데크와 여름 별장</p>
+<img class="photo" data-src="rs6_m123.jpg" alt="Loro Piana · Resort 26" style="position:absolute;left:60px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="LORO PIANA · RESORT 26" data-desc="데크 · 오후 자연광 · 데크체어">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:589px">LORO PIANA · RESORT 26</p>
+<img class="photo" data-src="rs6_lp26.jpg" alt="Loro Piana · 26Ss" style="position:absolute;left:665px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="LORO PIANA · 26SS" data-desc="별장 마당 · 확산광 · 벤치 착석">
+<p class="t3" style="position:absolute;left:665px;top:964px;width:589px">LORO PIANA · 26SS</p>
+<img class="photo" data-src="rs6_lp27.jpg" alt="Loro Piana · 26Ss" style="position:absolute;left:1270px;top:84px;width:589px;height:866px" data-zoom="1" data-cap="LORO PIANA · 26SS" data-desc="별장 마당 · 확산광 · 의자 착석">
+<p class="t3" style="position:absolute;left:1270px;top:964px;width:589px">LORO PIANA · 26SS</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">C · SUMMER IN RESIDENCE</p>
+<p class="t3" style="position:absolute;left:665px;top:1018px;width:589px">SOURCE · INSTAGRAM</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">17 / 18</p>
+</section>
+<section id="s18" data-id="c-location">
+<h2 class="t2" style="position:absolute;left:60px;top:36px;width:600px">Location</h2>
+<p class="t3 right" style="position:absolute;left:1060px;top:40px;width:800px">빌라 · 테라스 · 정원</p>
+<img class="photo" data-src="lb_us25.jpg" alt="Location" style="position:absolute;left:60px;top:84px;width:1187px;height:866px" data-zoom="1" data-cap="RAVELLO" data-desc="빌라 정원 · 잔디 · 소나무">
+<img class="photo" data-src="ls_us01.jpg" alt="Location" style="position:absolute;left:1263px;top:84px;width:597px;height:425px" data-zoom="1" data-cap="ATRANI" data-desc="아치 테라스 · 바다 전망">
+<img class="photo" data-src="ls_us26.jpg" alt="Location" style="position:absolute;left:1263px;top:525px;width:597px;height:425px" data-zoom="1" data-cap="RAVELLO" data-desc="아치 회랑 · 화단">
+<p class="t3" style="position:absolute;left:60px;top:964px;width:1187px">RAVELLO</p>
+<p class="t3" style="position:absolute;left:1263px;top:964px;width:597px">ATRANI / RAVELLO</p>
+<p class="t3" style="position:absolute;left:60px;top:1018px;width:600px">C · SUMMER IN RESIDENCE</p>
+<p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">18 / 18</p>
+</section>
+</div></div>
+<button class="nav" id="prev" aria-label="이전">‹</button>
+<button class="nav" id="next" aria-label="다음">›</button>
+<div id="bar"><i></i></div>
+<div id="hud" class="ui"><button id="fs" type="button">크게 보기</button></div>
+<div id="rot" class="ui off">화면을 가로로 돌려 주세요</div>
+<div id="intro" class="ui"><div class="box">
+<h2>AQUASCUTUM 27SS SHOOT PLAN</h2>
+<p>보는 법</p>
+<p>좌우 방향키 · 스와이프 · 휠로 넘깁니다</p>
+<p>이미지를 누르면 크게 볼 수 있습니다</p>
+<div class="row"><button class="main" id="goFs" type="button">전체화면으로 보기</button><button id="goPlain" type="button">이대로 보기</button></div>
+</div></div>
+<div id="lb" class="ui off"><img alt=""><div class="cap"><span id="lbc"></span><span id="lbd"></span></div><button id="lbp" type="button" aria-label="이전">‹</button><button id="lbn" type="button" aria-label="다음">›</button><button id="lbx" type="button" aria-label="닫기">×</button></div>
+<script>
+(function () {
+  var N = 18, cur = 1, stage = document.getElementById('stage'), secs = stage.querySelectorAll('section');
+  var bar = document.querySelector('#bar i'), intro = document.getElementById('intro');
+  var lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbCap = document.getElementById('lbc'), lbDesc = document.getElementById('lbd'), lbSet = [], lbIdx = 0;
+  var fsBtn = document.getElementById('fs'), rot = document.getElementById('rot');
+  var canFs = !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen);
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function fit() {
+    var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + s + ')';
+    var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    rot.className = 'ui' + (coarse && window.innerHeight > window.innerWidth ? '' : ' off');
+  }
+  function load(n) {
+    for (var k = n - 2; k <= n + 2; k++) {
+      if (k < 1 || k > N) continue;
+      var im = secs[k - 1].querySelectorAll('img[data-src]');
+      for (var i = 0; i < im.length; i++) { im[i].src = im[i].getAttribute('data-src'); im[i].removeAttribute('data-src'); }
+    }
+  }
+  function go(n, silent) {
+    n = Math.max(1, Math.min(N, n)); load(n);
+    for (var i = 0; i < N; i++) secs[i].className = (i === n - 1) ? 'on' : '';
+    cur = n; bar.style.width = (n / N * 100) + '%';
+    if (!silent && history.replaceState) history.replaceState(null, '', '#' + n);
+  }
+  function fromHash() { var m = /^#(\d+)$/.exec(location.hash); return m ? parseInt(m[1], 10) : 1; }
+  function isFs() { return document.fullscreenElement || document.webkitFullscreenElement; }
+  function fsOn() { var el = document.documentElement; (el.requestFullscreen || el.webkitRequestFullscreen).call(el); }
+  function fsOff() { (document.exitFullscreen || document.webkitExitFullscreen).call(document); }
+  function fsLabel() { fsBtn.textContent = isFs() ? '원래대로' : '크게 보기'; }
+  function openLb(img) {
+    var all = secs[cur - 1].querySelectorAll('img[data-zoom]'); lbSet = Array.prototype.slice.call(all); lbIdx = lbSet.indexOf(img); showLb();
+    lb.className = 'ui';
+  }
+  function showLb() {
+    var im = lbSet[lbIdx]; lbImg.src = im.currentSrc || im.src;
+    lbCap.textContent = pad(lbIdx + 1) + ' / ' + pad(lbSet.length) + (im.getAttribute('data-cap') ? ' · ' + im.getAttribute('data-cap') : '');
+    lbDesc.textContent = im.getAttribute('data-desc') || '';
+  }
+  function stepLb(d) { lbIdx = (lbIdx + d + lbSet.length) % lbSet.length; showLb(); }
+  function closeLb() { lb.className = 'ui off'; }
+  function lbOpen() { return lb.className.indexOf('off') < 0; }
+
+  document.getElementById('prev').onclick = function () { go(cur - 1); };
+  document.getElementById('next').onclick = function () { go(cur + 1); };
+  document.getElementById('goPlain').onclick = function () { intro.className = 'ui off'; };
+  document.getElementById('goFs').onclick = function () { intro.className = 'ui off'; if (canFs) fsOn(); };
+  fsBtn.onclick = function () { if (isFs()) fsOff(); else fsOn(); };
+  if (!canFs) { fsBtn.style.display = 'none'; document.getElementById('goFs').style.display = 'none'; }
+  document.addEventListener('fullscreenchange', fsLabel); document.addEventListener('webkitfullscreenchange', fsLabel);
+  document.getElementById('lbp').onclick = function (e) { e.stopPropagation(); stepLb(-1); };
+  document.getElementById('lbn').onclick = function (e) { e.stopPropagation(); stepLb(1); };
+  document.getElementById('lbx').onclick = closeLb; lb.onclick = function (e) { if (e.target === lb || e.target === lbImg) closeLb(); };
+  stage.addEventListener('click', function (e) { if (e.target.getAttribute && e.target.getAttribute('data-zoom')) openLb(e.target); });
+  document.addEventListener('keydown', function (e) {
+    var k = e.key;
+    if (lbOpen()) { if (k === 'Escape') closeLb(); else if (k === 'ArrowLeft') stepLb(-1); else if (k === 'ArrowRight') stepLb(1); return; }
+    if (k === 'ArrowRight' || k === 'PageDown' || k === ' ' || k === 'ArrowDown') { e.preventDefault(); go(cur + 1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp' || k === 'ArrowUp') { e.preventDefault(); go(cur - 1); }
+    else if (k === 'Home') go(1); else if (k === 'End') go(N);
+  });
+  var wheelAt = 0;
+  window.addEventListener('wheel', function (e) {
+    if (lbOpen()) return; var now = Date.now(); if (now - wheelAt < 520) return;
+    var d = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX; if (Math.abs(d) < 12) return;
+    wheelAt = now; go(cur + (d > 0 ? 1 : -1));
+  }, { passive: true });
+  var tx = 0, ty = 0;
+  document.addEventListener('touchstart', function (e) { tx = e.changedTouches[0].clientX; ty = e.changedTouches[0].clientY; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) < 44 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+    if (lbOpen()) stepLb(dx < 0 ? 1 : -1); else if (intro.className.indexOf('off') >= 0) go(cur + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  var idleT = 0;
+  function wake() { document.body.className = ''; clearTimeout(idleT); idleT = setTimeout(function () { document.body.className = 'idle'; }, 2600); }
+  ['mousemove', 'touchstart', 'keydown', 'click'].forEach(function (ev) { document.addEventListener(ev, wake, { passive: true }); }); wake();
+  window.addEventListener('resize', fit); window.addEventListener('orientationchange', fit);
+  window.addEventListener('hashchange', function () { go(fromHash(), true); });
+  if (/[?&]skip\b/.test(location.search)) intro.className = 'ui off';
+  fit(); go(fromHash(), true);
+  setTimeout(function () { stage.className = ''; }, 400);
+})();
+</script>
+</body>
+</html>
