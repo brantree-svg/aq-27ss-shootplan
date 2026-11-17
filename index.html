@@ -27,26 +27,31 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #F2F0E9; -we
 #stage section { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; visibility: hidden; transition: opacity .28s ease, visibility 0s linear .28s; }
 #stage section.on { opacity: 1; visibility: visible; transition: opacity .28s ease; }
 #stage.boot section { transition: none; }
-#stage img[data-zoom] { cursor: zoom-in; }
+#stage img[data-zoom] { cursor: zoom-in; transition: filter .2s ease; }
+#stage img[data-zoom]:hover { filter: brightness(.9); }
 .ui { font-family: 'Pretendard', Arial, sans-serif; font-size: 13px; line-height: 20px; font-weight: 500; color: #111111; }
-.nav { position: fixed; top: 50%; width: 44px; height: 72px; margin-top: -36px; border: 0; padding: 0; background: rgba(17,17,17,.0); color: #7D7B74; font-size: 30px; line-height: 72px; cursor: pointer; z-index: 5; opacity: .55; }
-.nav:hover { opacity: 1; background: rgba(17,17,17,.06); }
+.nav { position: fixed; top: 0; bottom: 0; width: 9vw; min-width: 56px; border: 0; padding: 0; background: transparent; cursor: pointer; z-index: 5; display: flex; align-items: center; justify-content: center; }
+.nav svg { width: 44px; height: 44px; padding: 8px; box-sizing: border-box; border-radius: 22px; background: rgba(242,240,233,.82); stroke: #111111; }
+.nav:hover svg { background: #111111; stroke: #F2F0E9; }
+.nav[disabled] { visibility: hidden; }
+@keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+body.hint #next svg { animation: nudge 1s ease-in-out 3; }
 #prev { left: 0; } #next { right: 0; }
 #bar { position: fixed; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(17,17,17,.08); z-index: 5; }
 #bar i { display: block; height: 2px; width: 0; background: #111111; transition: width .28s ease; }
 #hud { position: fixed; right: 12px; bottom: 10px; z-index: 6; display: flex; gap: 10px; align-items: center; }
-#hud button, #intro button, #lb button { font: inherit; color: inherit; background: rgba(242,240,233,.92); border: 1px solid #CBC7BB; padding: 5px 12px; cursor: pointer; border-radius: 0; }
-#hud button:hover, #intro button:hover { background: #111111; color: #F2F0E9; border-color: #111111; }
+#hud button { width: 36px; height: 36px; padding: 8px; box-sizing: border-box; border: 0; border-radius: 18px; background: rgba(242,240,233,.82); cursor: pointer; }
+#hud button svg { width: 20px; height: 20px; stroke: #111111; display: block; }
+#hud button:hover { background: #111111; }
+#hud button:hover svg { stroke: #F2F0E9; }
+#fs .in { display: none; } body.fs #fs .in { display: block; } body.fs #fs .out { display: none; }
+#lb button { cursor: pointer; }
 #hud, .nav { transition: opacity .3s ease; }
 body.idle #hud, body.idle .nav { opacity: 0; pointer-events: none; }
-#intro { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 20; background: rgba(242,240,233,.96); display: flex; align-items: center; justify-content: center; }
-#intro.off, #lb.off, #rot.off { display: none; }
-#intro div.box { width: min(420px, 84vw); }
-#intro h2 { font-size: 21px; line-height: 28px; font-weight: 500; margin: 0 0 14px; }
-#intro p { margin: 0 0 6px; color: #7D7B74; }
-#intro .row { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
-#intro .row button.main { background: #111111; color: #F2F0E9; border-color: #111111; }
-#rot { position: fixed; left: 0; right: 0; top: 0; z-index: 15; text-align: center; padding: 10px 12px; background: #111111; color: #F2F0E9; }
+#lb.off, #rot.off { display: none; }
+#rot { position: fixed; left: 50%; top: 14px; margin-left: -22px; width: 44px; height: 44px; padding: 10px; box-sizing: border-box; border-radius: 22px; z-index: 15; background: #111111; }
+#rot svg { width: 24px; height: 24px; stroke: #F2F0E9; display: block; animation: turn 1.6s ease-in-out infinite; }
+@keyframes turn { 0%, 30% { transform: rotate(0deg); } 70%, 100% { transform: rotate(-90deg); } }
 #lb { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 30; background: rgba(17,17,17,.94); color: #F2F0E9; }
 #lb img { position: absolute; left: 50%; top: 50%; max-width: 92vw; max-height: 84vh; transform: translate(-50%, -52%); cursor: zoom-out; }
 #lb .cap { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; color: #F2F0E9; }
@@ -54,9 +59,10 @@ body.idle #hud, body.idle .nav { opacity: 0; pointer-events: none; }
 #lbc { color: #CBC7BB; }
 #lbd { font-size: 15px; line-height: 24px; }
 #lb img { max-height: 82vh; }
-#lb button { position: absolute; background: transparent; border: 0; color: #F2F0E9; font-size: 30px; line-height: 44px; width: 52px; height: 72px; padding: 0; }
-#lbp { left: 4px; top: 50%; margin-top: -36px; } #lbn { right: 4px; top: 50%; margin-top: -36px; }
-#lbx { right: 6px; top: 6px; font-size: 26px !important; height: 44px !important; }
+#lb button { position: absolute; background: transparent; border: 0; width: 60px; height: 60px; padding: 14px; box-sizing: border-box; }
+#lb button svg { width: 32px; height: 32px; stroke: #F2F0E9; display: block; }
+#lbp { left: 4px; top: 50%; margin-top: -30px; } #lbn { right: 4px; top: 50%; margin-top: -30px; }
+#lbx { right: 6px; top: 6px; }
 </style>
 </head>
 <body>
@@ -296,23 +302,16 @@ body.idle #hud, body.idle .nav { opacity: 0; pointer-events: none; }
 <p class="t3 right" style="position:absolute;left:1660px;top:1018px;width:200px">18 / 18</p>
 </section>
 </div></div>
-<button class="nav" id="prev" aria-label="이전">‹</button>
-<button class="nav" id="next" aria-label="다음">›</button>
+<button class="nav" id="prev" aria-label="previous"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button class="nav" id="next" aria-label="next"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
 <div id="bar"><i></i></div>
-<div id="hud" class="ui"><button id="fs" type="button">크게 보기</button></div>
-<div id="rot" class="ui off">화면을 가로로 돌려 주세요</div>
-<div id="intro" class="ui"><div class="box">
-<h2>AQUASCUTUM 27SS SHOOT PLAN</h2>
-<p>보는 법</p>
-<p>좌우 방향키 · 스와이프 · 휠로 넘깁니다</p>
-<p>이미지를 누르면 크게 볼 수 있습니다</p>
-<div class="row"><button class="main" id="goFs" type="button">전체화면으로 보기</button><button id="goPlain" type="button">이대로 보기</button></div>
-</div></div>
-<div id="lb" class="ui off"><img alt=""><div class="cap"><span id="lbc"></span><span id="lbd"></span></div><button id="lbp" type="button" aria-label="이전">‹</button><button id="lbn" type="button" aria-label="다음">›</button><button id="lbx" type="button" aria-label="닫기">×</button></div>
+<div id="hud" class="ui"><button id="fs" type="button" aria-label="fullscreen"><svg class="out" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><svg class="in" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg></button></div>
+<div id="rot" class="off" aria-label="rotate"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg></div>
+<div id="lb" class="ui off"><img alt=""><div class="cap"><span id="lbc"></span><span id="lbd"></span></div><button id="lbp" type="button" aria-label="previous"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button id="lbn" type="button" aria-label="next"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><button id="lbx" type="button" aria-label="close"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <script>
 (function () {
   var N = 18, cur = 1, stage = document.getElementById('stage'), secs = stage.querySelectorAll('section');
-  var bar = document.querySelector('#bar i'), intro = document.getElementById('intro');
+  var bar = document.querySelector('#bar i'), prevB = document.getElementById('prev'), nextB = document.getElementById('next');
   var lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbCap = document.getElementById('lbc'), lbDesc = document.getElementById('lbd'), lbSet = [], lbIdx = 0;
   var fsBtn = document.getElementById('fs'), rot = document.getElementById('rot');
   var canFs = !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen);
@@ -321,7 +320,7 @@ body.idle #hud, body.idle .nav { opacity: 0; pointer-events: none; }
     var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
     stage.style.transform = 'scale(' + s + ')';
     var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-    rot.className = 'ui' + (coarse && window.innerHeight > window.innerWidth ? '' : ' off');
+    rot.className = (coarse && window.innerHeight > window.innerWidth ? '' : 'off');
   }
   function load(n) {
     for (var k = n - 2; k <= n + 2; k++) {
@@ -333,14 +332,15 @@ body.idle #hud, body.idle .nav { opacity: 0; pointer-events: none; }
   function go(n, silent) {
     n = Math.max(1, Math.min(N, n)); load(n);
     for (var i = 0; i < N; i++) secs[i].className = (i === n - 1) ? 'on' : '';
-    cur = n; bar.style.width = (n / N * 100) + '%';
+    cur = n; prevB.disabled = (n === 1); nextB.disabled = (n === N); bar.style.width = (n / N * 100) + '%';
     if (!silent && history.replaceState) history.replaceState(null, '', '#' + n);
   }
   function fromHash() { var m = /^#(\d+)$/.exec(location.hash); return m ? parseInt(m[1], 10) : 1; }
   function isFs() { return document.fullscreenElement || document.webkitFullscreenElement; }
-  function fsOn() { var el = document.documentElement; (el.requestFullscreen || el.webkitRequestFullscreen).call(el); }
+  function fsOn() { var el = document.documentElement, p = (el.requestFullscreen || el.webkitRequestFullscreen).call(el); if (p && p['catch']) p['catch'](function () {}); }
   function fsOff() { (document.exitFullscreen || document.webkitExitFullscreen).call(document); }
-  function fsLabel() { fsBtn.textContent = isFs() ? '원래대로' : '크게 보기'; }
+  function fsLabel() { setCls('fs', !!isFs()); }
+  function setCls(c, on) { var b = document.body, k = (' ' + b.className + ' ').replace(' ' + c + ' ', ' ').replace(/^ +| +$/g, ''); b.className = on ? (k ? k + ' ' + c : c) : k; }
   function openLb(img) {
     var all = secs[cur - 1].querySelectorAll('img[data-zoom]'); lbSet = Array.prototype.slice.call(all); lbIdx = lbSet.indexOf(img); showLb();
     lb.className = 'ui';
@@ -356,10 +356,11 @@ body.idle #hud, body.idle .nav { opacity: 0; pointer-events: none; }
 
   document.getElementById('prev').onclick = function () { go(cur - 1); };
   document.getElementById('next').onclick = function () { go(cur + 1); };
-  document.getElementById('goPlain').onclick = function () { intro.className = 'ui off'; };
-  document.getElementById('goFs').onclick = function () { intro.className = 'ui off'; if (canFs) fsOn(); };
-  fsBtn.onclick = function () { if (isFs()) fsOff(); else fsOn(); };
-  if (!canFs) { fsBtn.style.display = 'none'; document.getElementById('goFs').style.display = 'none'; }
+  var autoFs = canFs;
+  fsBtn.onclick = function () { autoFs = false; if (isFs()) fsOff(); else fsOn(); };
+  function firstFs(e) { if (!autoFs) return; autoFs = false; if (e.type === 'keydown' && (e.key === 'Escape' || e.key === 'F11' || e.key === 'F5' || e.ctrlKey || e.metaKey || e.altKey)) { autoFs = true; return; } if (!isFs()) { try { fsOn(); } catch (x) {} } }
+  ['click', 'keydown', 'touchend'].forEach(function (ev) { document.addEventListener(ev, firstFs); });
+  if (!canFs) fsBtn.style.display = 'none';
   document.addEventListener('fullscreenchange', fsLabel); document.addEventListener('webkitfullscreenchange', fsLabel);
   document.getElementById('lbp').onclick = function (e) { e.stopPropagation(); stepLb(-1); };
   document.getElementById('lbn').onclick = function (e) { e.stopPropagation(); stepLb(1); };
@@ -383,14 +384,14 @@ body.idle #hud, body.idle .nav { opacity: 0; pointer-events: none; }
   document.addEventListener('touchend', function (e) {
     var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
     if (Math.abs(dx) < 44 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
-    if (lbOpen()) stepLb(dx < 0 ? 1 : -1); else if (intro.className.indexOf('off') >= 0) go(cur + (dx < 0 ? 1 : -1));
+    if (lbOpen()) stepLb(dx < 0 ? 1 : -1); else go(cur + (dx < 0 ? 1 : -1));
   }, { passive: true });
   var idleT = 0;
-  function wake() { document.body.className = ''; clearTimeout(idleT); idleT = setTimeout(function () { document.body.className = 'idle'; }, 2600); }
+  function wake() { setCls('idle', false); clearTimeout(idleT); idleT = setTimeout(function () { setCls('idle', true); setCls('hint', false); }, 3200); }
   ['mousemove', 'touchstart', 'keydown', 'click'].forEach(function (ev) { document.addEventListener(ev, wake, { passive: true }); }); wake();
   window.addEventListener('resize', fit); window.addEventListener('orientationchange', fit);
   window.addEventListener('hashchange', function () { go(fromHash(), true); });
-  if (/[?&]skip\b/.test(location.search)) intro.className = 'ui off';
+  setCls('hint', true);
   fit(); go(fromHash(), true);
   setTimeout(function () { stage.className = ''; }, 400);
 })();
